@@ -10,7 +10,7 @@ function App() {
 
   return (
     
-      <BrowserRouter>
+      <BrowserRouter basename="/Priyatamaa">
         <Routes>
           <Route path="/" element={<Firstpage />}/>
           <Route path="/SecondPage" element={<SecondPage />}/>
