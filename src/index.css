@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.font-style {
+  font-family: 'Lato','Poppins','Inter', sans-serif; 
+                      
+}
+.gradient-text {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  -webkit-text-fill-color: transparent;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.unstructured-btn {
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #d6d3d8b4, #f2c7f8d8);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 60% 20% 50% 30% / 30% 50% 20% 50%; /* organic curve */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.unstructured-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #bebcbe3b, #605e6150);
+}
+
+
+.no-scrollbar{
+  scrollbar-width: thin;
+  scrollbar-color:rgba(0,0,0,0.2) transparent
+}
+
+.bg-Img{
+  background-image: url('/img/background_img.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.bg-Img2{
+  background-image: url('/img/background_img2.jpg');
+  background-size: cover;
+  background-position: center;
+}

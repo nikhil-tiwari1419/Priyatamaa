@@ -1,0 +1,14 @@
+import React from 'react'
+
+function Fifthpage() {
+  return (
+    <div> {/* footer */}
+      <>
+        <div className="text-center  bottom-0 text-sm">
+          Developed by Nikhil Tiwari
+        </div>
+      </></div>
+  )
+}
+
+export default Fifthpage
