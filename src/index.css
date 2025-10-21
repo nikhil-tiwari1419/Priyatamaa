@@ -26,20 +26,11 @@
 }
 
 .unstructured-btn {
-  padding: 12px 24px;
-  background: linear-gradient(90deg, #d6d3d8b4, #f2c7f8d8);
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 60% 20% 50% 30% / 30% 50% 20% 50%; /* organic curve */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-  cursor: pointer;
-  transition: transform 0.3s ease, background 0.3s ease;
+  @apply bg-transparent text-white font-semibold py-2 px-4 border border-white rounded-full transition duration-300 ease-in-out;
 }
 
 .unstructured-btn:hover {
-  transform: scale(1.05);
-  background: linear-gradient(90deg, #bebcbe3b, #605e6150);
+  @apply bg-yellow-100 text-yellow-400;
 }
 
 
@@ -57,4 +48,5 @@
   background-image: url('/img/background_img2.jpg');
   background-size: cover;
   background-position: center;
+
 }

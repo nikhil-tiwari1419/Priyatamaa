@@ -42,9 +42,9 @@ function Firstpage() {
     };
 
     return (
-        <div className='relative w-full mx-auto max-w-md bg-Img min-h-screen'>
+        <div className='relative w-full mx-auto max-w-md bg-gray-800 min-h-screen'>
             {/* Title */}
-            <span className='flex text-pink-600 flex-col font-style pt-10 items-center text-5xl underline decoration-4 decoration-dashed underline-offset-7'>
+            <span className='flex text-yellow-400 flex-col font-style pt-10 items-center text-5xl underline decoration-4 decoration-dashed underline-offset-7'>
                 PriyaTamaa
             </span>
             {/* img */}
@@ -70,31 +70,24 @@ function Firstpage() {
             </audio>
 
             {/* Buttons */}
-            <div className='flex flex-col '>
-                <button className='unstructured-btn text-2xl m-5 mx-10' onClick={secondpg}>
-                    Sync Wether song
+            <div className='flex-col'>
+                <button className='unstructured-btn text-xl m-5 mx-10' onClick={secondpg}>
+                    Song playlist
                 </button>
-                <button className='unstructured-btn text-2xl m-5 mx-10' onClick={thirdpg}>
-                    How much he/she
+                <button className='unstructured-btn text-xl m-5 mx-10' onClick={thirdpg}>
+                    Explore more Songs 
                 </button>
-                <button className='unstructured-btn text-2xl m-5 mx-10' onClick={fourthpg}>
-                    Sad / lonly / akeli hu
+                <button className='text-xl  unstructured-btn m-5 mx-10' onClick={fourthpg}>
+                    NaN
                 </button>
-                <button className='text-2xl  unstructured-btn m-5 mx-10' onClick={fifthpg}>
-                    happy / Bak Bak / nakhre
+                <button className='text-xl  unstructured-btn m-5 mx-10' onClick={fifthpg}>
+                    NaN
                 </button>
-                {/* <div className='right-30'>
-                <img
-                    className='h-30 mx-40 p-3'
-                    src="" alt="" 
-                />
-            </div> */}
-                
             </div>
           
 
             {/* seek baar */}
-            <div className='flex flex-col items-center '>
+            <div className='flex flex-col items-center mt-10'>
                 <input type="range"
                     min="0"
                     max={audioRef.current?.duration || 0}
@@ -112,7 +105,7 @@ function Firstpage() {
                 className='absolute mt-20 mx-auto  flex items-center justify-center cursor-pointer'
             >
                 {playpaus ? (
-                    <FaRegPauseCircle className="text-blue-500 text-6xl" />
+                    <FaRegPauseCircle className="text-yellow-500 text-6xl" />
                 ) : (
                     <FaRegPlayCircle className="text-gray-500 text-6xl" />
                 )}
