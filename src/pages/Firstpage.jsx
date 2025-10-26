@@ -42,7 +42,7 @@ function Firstpage() {
     };
 
     return (
-        <div className='relative w-full mx-auto max-w-md bg-gray-800 min-h-screen'>
+        <div className='relative w-full mx-auto max-w-md bg-gray-100 min-h-screen text-black'>
             {/* Title */}
             <span className='flex text-yellow-400 flex-col font-style pt-10 items-center text-5xl underline decoration-4 decoration-dashed underline-offset-7'>
                 PriyaTamaa
@@ -87,7 +87,7 @@ function Firstpage() {
           
 
             {/* seek baar */}
-            <div className='flex flex-col items-center mt-10'>
+            <div className='flex flex-col items-center mt-10 rounded-lg  border-1 border-b-5 mx-3 py-4 h-[20vh]'>
                 <input type="range"
                     min="0"
                     max={audioRef.current?.duration || 0}
@@ -96,13 +96,13 @@ function Firstpage() {
                     style={{
                         background: `linear-gradient(to right, #9333ea ${progress}%, #e5e7eb ${progress}%)`,
                     }}
-                    className='w-80 rounded-2xl h-1 appearance-none cursor-pointer focus:outline-none'
+                    className='w-80 rounded-2xl h-1 mt-3 appearance-none cursor-pointer focus:outline-none'
                 />
                 <p className='mt-2 font-bold text-center'>Time line : {Math.round(progress)}%</p>
                   {/* play pause */}
             <button
                 onClick={togglePlayPaus}
-                className='absolute mt-20 mx-auto  flex items-center justify-center cursor-pointer'
+                className='absolute mt-15 mx-auto  flex items-center justify-center cursor-pointer'
             >
                 {playpaus ? (
                     <FaRegPauseCircle className="text-yellow-500 text-6xl" />

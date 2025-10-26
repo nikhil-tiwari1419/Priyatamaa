@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router-dom'
 import { FaPager } from "react-icons/fa";
 import { FaEllipsisH } from "react-icons/fa";
 import Cards from '../assets/Components/Cards';
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+
 
 function Thirdpage() {
 
@@ -14,60 +16,45 @@ function Thirdpage() {
       title: "Quote'S",
       icon1: FaPager,
       icon2: FaEllipsisH,
-      bgImage: "https://images.unsplash.com/photo-1633175354158-b252df554c39?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1632",
+      bgImage: "https://media.tenor.com/cuKLh1gaUCAAAAAi/transparent-love.gif",
       btn: "open",
-      Emogi: "📩"
+      link:"https://www.shutterfly.com/ideas/i-love-you-quotes/#Love%20Quotes%20For%20Him"
     },
     {
-      title: "90's Songs",
+      title: "Old Song's",
       icon1: FaPager,
       icon2: FaEllipsisH,
-      bgImage: "https://images.unsplash.com/photo-1633175354158-b252df554c39?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1632",
+     bgImage: "https://media1.tenor.com/m/qOa5hfC2xP0AAAAC/love-love.gif",
       btn: "open",
-      Emogi: "💗"
+      link:"https://open.spotify.com/playlist/37i9dQZF1DXa6iPZDThhLh?si=5b411302146c405b"
     },
     {
-      title: "20's Song's",
+      title: "Mashup",
       icon1: FaPager,
       icon2: FaEllipsisH,
-      bgImage: "https://images.unsplash.com/photo-1633175354158-b252df554c39?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1632",
+      bgImage: "https://media.tenor.com/8L0kMuVgHqEAAAAi/hearts-sending-love.gif",
       btn: "open",
-      Emogi: "💝"
+      link:"/SecondPage"
     },
     {
-      title: "",
-      icon1: FaPager,
-      icon2: FaEllipsisH,
-      btn: "open",
-      bgImage: "https://images.unsplash.com/photo-1633175354158-b252df554c39?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1632",
-      Emogi: "💝"
-    },
-    {
-      title: "Tranding play_list",
+      title: "Yadeen",
       icon1: FaPager,
       icon2: FaEllipsisH,
       btn: "open",
-      bgImage: "https://images.unsplash.com/photo-1633175354158-b252df554c39?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1632",
-      Emogi: "💝"
+      bgImage: "https://images.unsplash.com/photo-1666269194337-f1c16d264234?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687",
+      link:"/Fourthpage"
     },
-    {
-      title: "20's Song's",
-      icon1: FaPager,
-      icon2: FaEllipsisH,
-      btn: "open",
-      bgImage: "https://images.unsplash.com/photo-1633175354158-b252df554c39?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1632",
-      Emogi: "💝"
-    }
+ 
   ]
   return (
-    <div className='max-w-md min-h-screen mx-auto flex-wrap pt-6 px-3'>
+    <div className='max-w-md min-h-screen mx-auto flex-wrap bg-white pt-6 px-3'>
         <button onClick={firsthpage}
-          className='bg-red-500 fixed text-black rounded font-bold px-4 '
+          className='bg-gray-300 fixed text-black rounded-xl font-bold text-2xl p-1 px-4 '
         >
-          Back
+          <FaRegArrowAltCircleLeft/>
 
         </button>
-      <div className='border-b-7 border-b-lime-400 p-3 rounded-xl h-[650px] overflow-y-auto'>
+      <div className='border-b-5 border-b-violet-600 p-3 rounded-xl h-[650px] overflow-y-auto no-scrollbar'>
         {CardData.map((item, index) => (
           <Cards
             key={index}
@@ -75,11 +62,15 @@ function Thirdpage() {
             icon1={item.icon1}
             icon2={item.icon2}
             bgImage={item.bgImage}
-            Emogi={item.Emogi}
             btn={item.btn}
+            link={item.link}
           />
         ))}
       </div>
+     <footer className="text-center py-4  text-black mt-3">
+      <p>&copy; {new Date().getFullYear()} Priyataama — All rights reserved. 
+          Deloped by Nikhil........</p>
+    </footer>
     </div>
   );
 }
