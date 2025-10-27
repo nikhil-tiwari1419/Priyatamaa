@@ -78,10 +78,10 @@ function Firstpage() {
                     Explore more Songs 
                 </button>
                 <button className='text-xl  unstructured-btn m-5 mx-10' onClick={fourthpg}>
-                    NaN
+                    Yadeen
                 </button>
                 <button className='text-xl  unstructured-btn m-5 mx-10' onClick={fifthpg}>
-                    NaN
+                    kuch-nahi 
                 </button>
             </div>
           
@@ -111,6 +111,10 @@ function Firstpage() {
                 )}
             </button>
             </div>
+              <footer className="text-center py-4  text-black mt-3">
+        <p>&copy; {new Date().getFullYear()} Priyataama — All rights reserved.
+          Deloped by Nikhil........</p>
+      </footer>
         </div>
     );
 }

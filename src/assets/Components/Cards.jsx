@@ -1,9 +1,10 @@
 import React from 'react'
-
-function Cards({ title, icon1: Icon1, icon2: Icon2, bgImage, btn, link }) {
+import { useNavigate } from 'react-router-dom'
+function Cards({ title, icon1: Icon1, icon2: Icon2, bgImage, btn1, btn2, link,type }) {
+  const navigate = useNavigate();
   return (
     <div className="w-full  rounded-3xl text-black mb-6 border-1 border-b-5 overflow-hidden shadow-lg">
-      
+
       {/* 🔹 Header with icons */}
       <div className="flex justify-between items-center p-3">
         <span className="flex items-center gap-3 text-lg font-semibold border-1 border-b-4 px-4 py-1 rounded-lg">
@@ -23,17 +24,27 @@ function Cards({ title, icon1: Icon1, icon2: Icon2, bgImage, btn, link }) {
         </div>
       </div>
 
-      {/* 🔹 Emoji + Button */}
+      {/* 🔹 link external and internal + Button */}
       <div className="flex flex-col items-center mt-2 space-y-2">
         {/* <div className="text-3xl">{Emogi}</div> */}
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className=" py-2 px-10 mb-2 font-bold rounded-2xl border-b-4 border-1 hover:bg-gray-200 transition"
-        >
-          {btn}
-        </a>
+        {type === "External" && (
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className=" py-2 px-10 mb-2 font-bold rounded-2xl border-b-4 border-1 hover:bg-gray-200 transition"
+          >
+            {btn1}
+          </a>
+        )}
+        {type === "Internal" && (
+          <button
+            onClick={() => navigate(link)}
+            className=" py-2 px-10 mb-2 font-bold rounded-2xl border-b-4 border-1 hover:bg-gray-200 transition"
+          >
+            {btn2}
+          </button>
+        )}
       </div>
     </div>
   )
