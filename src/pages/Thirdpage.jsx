@@ -19,8 +19,8 @@ function Thirdpage() {
       bgImage: "https://media.tenor.com/cuKLh1gaUCAAAAAi/transparent-love.gif",
       btn1: "Go-to",
       btn2: "open",
-      type: "External",
-      link: "https://www.shutterfly.com/ideas/i-love-you-quotes/#Love%20Quotes%20For%20Him"
+      type: "Internal",
+      link: "/Sixthpage"
     },
     {
       title: "Old Song's",
@@ -89,7 +89,7 @@ function Thirdpage() {
       </div>
       <footer className="text-center py-4  text-black mt-3">
         <p>&copy; {new Date().getFullYear()} Priyataama — All rights reserved.
-          Deloped by Nikhil........</p>
+          Crafted with 💓</p>
       </footer>
     </div>
   );

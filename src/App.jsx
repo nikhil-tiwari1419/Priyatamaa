@@ -4,6 +4,7 @@ import SecondPage from "./pages/SecondPage";
 import Thirdpage from "./pages/Thirdpage";
 import Fourthpage from "./pages/Fourthpage";
 import Fifthpage from "./pages/Fifthpage";
+import Sixthpage from './pages/Sixthpage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/Thirdpage" element={<Thirdpage />}/>
           <Route path="/Fourthpage" element={<Fourthpage />}/>
           <Route path="/Fifthpage" element={<Fifthpage />}/>
+          <Route path="/Sixthpage" element={<Sixthpage />}/>
         </Routes>
       </BrowserRouter>
 

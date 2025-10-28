@@ -96,7 +96,11 @@ function SecondPage() {
     '/img/sad-life.gif',
     '/img/pengu.gif',
     '/img/waiting-text.gif',
-    '/img/pengu-pudgy.gif'
+    '/img/pengu-pudgy.gif',
+    '/img/smash-smashing.gif',
+    '/img/waiting-waiting-for-you.gif',
+    '/img/two-red-heart.png',
+    '/img/cloudy-morning.gif'
   ]
   const [currentimgIndex, setCurrentimgIndex] = useState(0);
   useEffect(() => {
@@ -178,7 +182,7 @@ function SecondPage() {
       {/* footer */}
       <div>
         <div className="text-center text-gray-400 bottom-0 text-sm">
-          Developed by Nikhil Tiwari
+         Crafted with 💗
         </div>
       </div>
     </div>
