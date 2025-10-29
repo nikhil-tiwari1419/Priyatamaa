@@ -44,9 +44,9 @@ function Firstpage() {
     };
 
     return (
-        <div className='relative w-full mx-auto font-mono max-w-md bg-gradient-to-b from-gray-300 via-blue-100 to-gray-400 min-h-screen text-black'>
+        <div className='relative w-full mx-auto  font-mono max-w-md bg-gradient-to-b from-gray-300 via-blue-100 to-gray-400 min-h-screen text-black'>
             {/* Title */}
-            <div className='flex bg-black/50 justify-between items-center pt-3 pb-2 px-3'>
+            <div className='flex bg-black/50 justify-between border-b-4 border rounded-full items-center  pb-2 px-3'>
                 <span className=' text-blue-800 items-center flex font-style gap-2 text-xl underline decoration-4 decoration-amber-300 decoration-dashed underline-offset-7'>
                     {/* img */}
                     <img
