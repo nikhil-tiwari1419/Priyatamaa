@@ -113,7 +113,7 @@ function Firstpage() {
             </div>
               <footer className="text-center py-4  text-black mt-3">
         <p>&copy; {new Date().getFullYear()} Priyataama — All rights reserved.
-          Deloped by Nikhil........</p>
+          ........</p>
       </footer>
         </div>
     );
