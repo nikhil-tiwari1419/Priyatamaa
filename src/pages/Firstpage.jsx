@@ -42,7 +42,7 @@ function Firstpage() {
     };
 
     return (
-        <div className='relative w-full mx-auto max-w-md bg-gray-100 min-h-screen text-black'>
+        <div className='relative w-full mx-auto max-w-md bg-gradient-to-r from-violet-100 via-red-100 to-cyan-100 min-h-screen text-black'>
             {/* Title */}
             <span className='flex text-yellow-400 flex-col font-style pt-10 items-center text-5xl underline decoration-4 decoration-dashed underline-offset-7'>
                 PriyaTamaa
