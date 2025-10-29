@@ -60,7 +60,7 @@ function SecondPage() {
   // Auto play when song change 
   useEffect(() => {
     if (audioRef.current && songs.length > 0) {
-      audioRef.current.load();
+      audioRef.current.play();
       if (isPlaying) {
         audioRef.current.play().catch((error) =>
           console.error("Error playing audio:", error)
@@ -106,13 +106,29 @@ function SecondPage() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentimgIndex(prevIndex => (prevIndex + 1) % images.length);
-    }, 5000);
+    }, 2000);
     return () => clearInterval(interval);
   }, [images.length]);
 
+  // seak bar configuration 
+
+
+  const [progress, setprogress] = useState(0);
+
+  const handelTimeUpdate = () => {
+    const current = audioRef.current.currentTime;
+    const duration = audioRef.current.duration;
+    setprogress((current / duration) * 100);
+  }
+  const handelChange = (e) => {
+    const value = e.target.value;
+    const duration = audioRef.current.duration;
+    audioRef.current.currentTime = (duration / 100) * value;
+    setprogress(value);
+  };
 
   return (
-    <div className="min-h-screen mx-auto max-w-md bg-Img2 to-gray-400 w-full">
+    <div className="min-h-screen mx-auto max-w-md  bg-gradient-to-b from-gray-300 via-blue-100 to-gray-400 w-full">
       <span className="  flex flex-col text-indigo-300 items-center font-style  text-2xl underline decoration-4 decoration-dashed underline-offset-7">
         Music Player
       </span>
@@ -124,9 +140,18 @@ function SecondPage() {
         <FaRegArrowAltCircleLeft />
       </button>
 
-      <h2 className="text-center font-bold mb-3 text-cyan-500 text-2xl">Song's list</h2>
+      <div className='flex justify-center mb-5'>
+        <div className="w-40 h-40  rounded-full overflow-hidden flex justify-between bg-gray-200 shadow-lg">
+          <img
+            className='h-full w-full object-cover'
+            src={images[currentimgIndex]}
+            alt="some image"
+          />
+        </div>
+      </div>
+      {/* <h2 className="text-center font-bold mb-3 text-cyan-500 text-2xl">Song's list</h2> */}
 
-      <div className="h-[450px] px-2 mx-5 overflow-y-auto no-scrollbar rounded-xl bg-transparent shadow-lg shadow-gray-900/50">
+      <div className="h-[530px] px-2 mx-5 overflow-y-auto no-scrollbar rounded-xl bg-transparent shadow-lg shadow-gray-900/50">
         <ul className="space-y-2">
           {songs.map((song, idx) => (
             <li key={idx}
@@ -147,6 +172,7 @@ function SecondPage() {
             ref={audioRef}
             src={songs[currentIndex].url}
             onEnded={nextSong}
+            onTimeUpdate={handelTimeUpdate}
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
             controls
@@ -156,33 +182,50 @@ function SecondPage() {
         )}
       </div>
       {/* Controls */}
-      <div className="h-12 mt-5 flex items-center justify-center gap-6 bg-gray-500 mx-8 rounded-2xl py-4">
-        <button onClick={prevSong} className="p-3 text-gray-100 rounded-full hover:text-gray-100">
-          <FaStepBackward className="text-2xl" />
-        </button>
-        <button onClick={togglePlayPause} className="p-3 text-amber-400 rounded-full hover:bg-gray-400">
-          {isPlaying ? <FaPause className="text-3xl" /> : <FaPlay className="text-3xl" />}
-        </button>
-        <button onClick={nextSong} className="p-3 text-gray-100 rounded-full hover:text-gray-100">
-          <FaStepForward className="text-2xl" />
-        </button>
-      </div>
+      <div
+        className="fixed bottom-5 left-1/2 -translate-x-1/2 w-[70vw] flex flex-col items-center 
+             backdrop-blur-md shadow-2xl border-violet-400 border-2 rounded  
+              py-4 bg-white/20 z-50"
+      >
+        {/* Seek Bar */}
+        <input
+          type="range"
+          min="0"
+          max={audioRef.current?.duration || 0}
+          value={audioRef.current?.currentTime || 0}
+          onChange={handelChange}
+          style={{
+            background: `linear-gradient(to right, #9333ea ${progress}%, #e5e7eb ${progress}%)`,
+          }}
+          className="w-56 rounded-2xl h-1 appearance-none cursor-pointer focus:outline-none mb-2 "
+        />
 
-
-      <div className='flex justify-center mt-10 mb-5'>
-        <div className="w-40 h-40  rounded-full overflow-hidden flex justify-between bg-gray-200 shadow-lg">
-          <img
-            className='h-full w-full object-cover'
-            src={images[currentimgIndex]}
-            alt="some image"
-          />
+        {/* Control Buttons */}
+        <div className="flex items-center justify-center space-x-4">
+          <button onClick={prevSong} className="px-3 text-black rounded-full hover:text-violet-400">
+            <FaStepBackward className="text-2xl" />
+          </button>
+          <button
+            onClick={togglePlayPause}
+            className="px-4 text-black rounded-full hover:bg-violet-400/40"
+          >
+            {isPlaying ? (
+              <FaPause className="text-3xl" />
+            ) : (
+              <FaPlay className="text-3xl" />
+            )}
+          </button>
+          <button onClick={nextSong} className="px-3 text-black rounded-full hover:text-violet-400">
+            <FaStepForward className="text-2xl" />
+          </button>
         </div>
       </div>
 
+
       {/* footer */}
       <div>
-        <div className="text-center text-gray-400 bottom-0 text-sm">
-         Crafted with 💗
+        <div className="text-center mt-2 text-gray-900 bottom-0 text-sm">
+          Crafted with 💗
         </div>
       </div>
     </div>

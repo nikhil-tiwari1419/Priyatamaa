@@ -4,7 +4,7 @@ import { FaRegPlayCircle } from "react-icons/fa";
 import { FaRegPauseCircle } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { HiSun } from "react-icons/hi";
-
+import Song from "../assets/Components/Song";
 function Firstpage() {
     const direction = useNavigate();
 
@@ -43,10 +43,70 @@ function Firstpage() {
         setprogress(value);
     };
 
+    const SongCard = [
+        {
+            Name: "Blinding Lights",
+            Song: "The Weeknd",
+            Img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4",
+        },
+        {
+            Name: "Shape of You",
+            Song: "Ed Sheeran",
+            Img: "https://images.unsplash.com/photo-1511379938547-c1f69419868d",
+        },
+        {
+            Name: "Levitating",
+            Song: "Dua Lipa",
+            Img: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+        },
+        {
+            Name: "Peaches",
+            Song: "Justin Bieber",
+            Img: "https://images.unsplash.com/photo-1525182008055-f88b95ff7980",
+        },
+        {
+            Name: "Stay",
+            Song: "The Kid LAROI, Justin Bieber",
+            Img: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+        },
+        {
+            Name: "Perfect",
+            Song: "Ed Sheeran",
+            Img: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+        },
+        {
+            Name: "Senorita",
+            Song: "Shawn Mendes & Camila Cabello",
+            Img: "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2",
+        },
+        {
+            Name: "Believer",
+            Song: "Imagine Dragons",
+            Img: "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2",
+        },
+        {
+            Name: "Night Changes",
+            Song: "One Direction",
+            Img: "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc",
+        },
+        {
+            Name: "Closer",
+            Song: "The Chainsmokers ft. Halsey",
+            Img: "https://images.unsplash.com/photo-1485579149621-3123dd979885",
+        },
+        {
+            Name: "Let Me Love You",
+            Song: "DJ Snake ft. Justin Bieber",
+            Img: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3",
+        },
+    ];
+
+
+
     return (
-        <div className='relative w-full mx-auto  font-mono max-w-md bg-gradient-to-b from-gray-300 via-blue-100 to-gray-400 min-h-screen text-black'>
+        <div className='relative w-full mx-auto font-mono max-w-md bg-gradient-to-b from-gray-300 via-blue-100 to-gray-400 min-h-screen text-black px-2 pt-1.5'>
             {/* Title */}
-            <div className='flex bg-black/50 justify-between border-b-4 border rounded-full items-center  pb-2 px-3'>
+            <div className='flex items-center justify-between border-b-fuchsia-500 border rounded-2xl p-2 px-3'>
                 <span className=' text-blue-800 items-center flex font-style gap-2 text-xl underline decoration-4 decoration-amber-300 decoration-dashed underline-offset-7'>
                     {/* img */}
                     <img
@@ -61,12 +121,39 @@ function Firstpage() {
                 </span>
             </div>
             {/* <hr className='mt-2' /> */}
-            <div className='px-3 mt-1 flex justify-center items-center gap-2'>
+            <div className='px-2 mt-1 flex justify-center items-center gap-2'>
                 <HiSun className='text-4xl border-3 rounded-full border-blue-400 w-11 h-11 ' />
                 <div className='flex flex-col leading-tight'>
                     <h3 className='underline underline-offset-2 decoration-4 decoration-blue-400 text-xl '>Good Morning</h3>
-                    <div className='text-gray-500 text-xl font-semibold '>Nikhil...</div>
+                    <div className=' text-xl font-semibold '>Nikhil...</div>
                 </div>
+            </div>
+            <div className='flex overflow-x-auto no-scrollbar border rounded-full  border-none bg-white space-x-5 px-1 h-8 
+               m-2'>
+                <button className=' text-sm hover:underline underline-offset-2 flex-shrink-0' onClick={secondpg}>
+                    Song playlist
+                </button>
+                <button className='text-sm flex-shrink-0' onClick={thirdpg}>
+                    Explore more
+                </button>
+                <button className='text-sm flex-shrink-0' onClick={fourthpg}>
+                    Yadeen
+                </button>
+                <button className='text-sm flex-shrink-0' onClick={fifthpg}>
+                    kuch-nahi
+                </button>
+                <button className='text-sm flex-shrink-0' onClick={fifthpg}>
+                    kuch-nahi
+                </button>
+                <button className='text-sm flex-shrink-0' onClick={fifthpg}>
+                    kuch-nahi
+                </button>
+                <button className='text-sm flex-shrink-0' onClick={fifthpg}>
+                    kuch-nahi
+                </button>
+            </div>
+            <div className='border h-50 mx-2'>
+
             </div>
             {/* audio */}
             <audio
@@ -81,26 +168,26 @@ function Firstpage() {
             >
             </audio>
 
-            {/* Buttons */}
-            <div className='flex-col'>
-                <button className='unstructured-btn text-xl m-5 mx-10' onClick={secondpg}>
-                    Song playlist
-                </button>
-                <button className='unstructured-btn text-xl m-5 mx-10' onClick={thirdpg}>
-                    Explore more Songs
-                </button>
-                <button className='text-xl  unstructured-btn m-5 mx-10' onClick={fourthpg}>
-                    Yadeen
-                </button>
-                <button className='text-xl  unstructured-btn m-5 mx-10' onClick={fifthpg}>
-                    kuch-nahi
-                </button>
+            {/* song */}
+            <div className='border m-2 h-[50vh] p-3 overflow-auto no-scrollbar shadow-md bg-black/5 border-none rounded-xl'>
+                {SongCard.map((item, idx) => (
+                    <Song
+                        key={idx}
+                        name={item.Name}
+                        song={item.Song}
+                        img={item.Img}
+                    />
+                ))}
             </div>
 
 
             {/* seek baar */}
-            <div className='flex flex-col items-center mt-10 rounded-lg  border-1 border-b-5 mx-3 py-4 h-[20vh]'>
-                <input type="range"
+            <div className="fixed bottom-5 w-xl left-1/2 -translate-x-1/2 flex flex-col items-center 
+                 backdrop-blur-md shadow-2xl border-violet-400 border-2 rounded-full  px-6 py-3 
+                z-50">
+                <h3>Default Songfor My PriyaTamaa </h3>
+                <input
+                    type="range"
                     min="0"
                     max={audioRef.current?.duration || 0}
                     value={audioRef.current?.currentTime || 0}
@@ -108,25 +195,24 @@ function Firstpage() {
                     style={{
                         background: `linear-gradient(to right, #9333ea ${progress}%, #e5e7eb ${progress}%)`,
                     }}
-                    className='w-80 rounded-2xl h-1 mt-3 appearance-none cursor-pointer focus:outline-none'
+                    className="w-48 rounded-2xl h-1 appearance-none cursor-pointer focus:outline-none"
                 />
-                <p className='mt-2 font-bold text-center'>Time line : {Math.round(progress)}%</p>
-                {/* play pause */}
                 <button
                     onClick={togglePlayPaus}
-                    className='absolute mt-15 mx-auto  flex items-center justify-center cursor-pointer'
+                    className="mt-3 flex items-center justify-center cursor-pointer"
                 >
                     {playpaus ? (
-                        <FaRegPauseCircle className="text-yellow-500 text-6xl" />
+                        <FaRegPauseCircle className="text-yellow-500 text-4xl" />
                     ) : (
-                        <FaRegPlayCircle className="text-gray-500 text-6xl" />
+                        <FaRegPlayCircle className="text-black text-4xl" />
                     )}
                 </button>
             </div>
-            <footer className="text-center py-4  text-black mt-3">
+
+            {/* <footer className="text-center py-4  text-black mt-3">
                 <p>&copy; {new Date().getFullYear()} Priyataama — All rights reserved.
                     ........</p>
-            </footer>
+            </footer> */}
         </div>
     );
 }

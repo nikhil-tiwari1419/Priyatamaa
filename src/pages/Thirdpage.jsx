@@ -65,7 +65,7 @@ function Thirdpage() {
 
   ]
   return (
-    <div className='max-w-md min-h-screen mx-auto flex-wrap bg-gradient-to-r from-violet-100 via-red-100 to-cyan-100 pt-6 px-3'>
+    <div className='max-w-md min-h-screen mx-auto flex-wrap bg-gradient-to-b from-gray-300 via-blue-100 to-gray-400 pt-6 px-3'>
       <button onClick={firsthpage}
         className='bg-gray-300 fixed text-black rounded-xl font-bold text-2xl p-1 px-4 '
       >
