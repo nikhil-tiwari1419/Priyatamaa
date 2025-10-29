@@ -1,4 +1,5 @@
 import './App.css'
+import Main from "./pages/Main";
 import Firstpage from "./pages/Firstpage";
 import SecondPage from "./pages/SecondPage";
 import Thirdpage from "./pages/Thirdpage";
@@ -13,7 +14,8 @@ function App() {
     
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Firstpage />}/>
+          <Route path="/" element={<Main />}/>
+          <Route path="/Firstpage" element={<Firstpage />}/>
           <Route path="/SecondPage" element={<SecondPage />}/>
           <Route path="/Thirdpage" element={<Thirdpage />}/>
           <Route path="/Fourthpage" element={<Fourthpage />}/>

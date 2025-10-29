@@ -119,7 +119,7 @@ function SecondPage() {
       {/* Back Button */}
       <button
         className="mx-10 font-bold text-violet-600 text-2xl"
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/Firstpage")}
       >
         <FaRegArrowAltCircleLeft />
       </button>

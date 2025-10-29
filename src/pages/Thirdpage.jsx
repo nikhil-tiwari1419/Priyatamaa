@@ -9,7 +9,7 @@ function Thirdpage() {
 
   const direction = useNavigate();
   const firsthpage = () => {
-    direction("/")
+    direction("/Firstpage")
   }
   const CardData = [
     {
