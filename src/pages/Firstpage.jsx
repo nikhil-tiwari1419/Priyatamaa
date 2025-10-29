@@ -2,6 +2,8 @@ import { useState, useRef } from 'react'
 import { useNavigate } from "react-router-dom";
 import { FaRegPlayCircle } from "react-icons/fa";
 import { FaRegPauseCircle } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
+import { FaRegFaceLaugh } from "react-icons/fa6";
 
 function Firstpage() {
     const direction = useNavigate();
@@ -42,19 +44,29 @@ function Firstpage() {
     };
 
     return (
-        <div className='relative w-full mx-auto max-w-md bg-gradient-to-r from-violet-100 via-red-100 to-cyan-100 min-h-screen text-black'>
+        <div className='relative w-full mx-auto font-mono max-w-md bg-gradient-to-r from-violet-100 via-red-100 to-cyan-100 min-h-screen text-black'>
             {/* Title */}
-            <span className='flex text-yellow-400 flex-col font-style pt-10 items-center text-5xl underline decoration-4 decoration-dashed underline-offset-7'>
-                PriyaTamaa
-            </span>
-            {/* img */}
-            <div className='px-40'>
+            <div className='flex justify-between items-center pt-3 px-3'> 
+            <span className=' text-blue-400 items-center flex font-style gap-2 text-xl underline decoration-4 decoration-dashed underline-offset-7'>
+                 {/* img */}
                 <img
-                    className='w-44 mt-11 rounded-full'
+                    className='w-10 h-10 rounded-full'
                     src="/img/image.png"
                     alt="img"
                 />
-                
+                PriyaTamaa
+            </span>
+            <span className='border-3 border-blue-500 rounded-full w-10 h-10 flex items-center justify-center text-xl'>
+                <FaSearch />
+            </span>
+            </div>
+           
+            <div className='px-3 mt-3 flex items-center gap-2'>
+                <FaRegFaceLaugh  className='text-4xl border-3 rounded-full border-blue-400 w-11 h-11 '/>
+                <div className='flex flex-col leading-tight'>
+                <h3 className='underline underline-offset-2 decoration-4 decoration-blue-400 text-xl '>Good Morning</h3>
+                <div className='text-gray-500 text-xl font-semibold '>Nikhil...</div>
+                </div>
             </div>
             {/* audio */}
             <audio
