@@ -15,7 +15,7 @@ function Fourthpage() {
         Navigate("/Thirdpage")
  }
   return (
-    <div className='p-6 bg-gray-700 mih-h-screen flex flex-wrap  gap-5 max-w-md mx-auto '>
+    <div className='p-6 bg-gradient-to-b from-gray-500 via-blue-300 to-gray-500 mih-h-screen flex flex-wrap  gap-5 max-w-md mx-auto '>
        <button 
        onClick={thirdpage}
        className='text-2xl text-amber-300'

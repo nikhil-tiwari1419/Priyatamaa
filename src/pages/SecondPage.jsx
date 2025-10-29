@@ -128,7 +128,7 @@ function SecondPage() {
   };
 
   return (
-    <div className="min-h-screen mx-auto max-w-md  bg-gradient-to-b from-gray-300 via-blue-100 to-gray-400 w-full">
+    <div className="min-h-screen mx-auto max-w-md  bg-gradient-to-b from-gray-400 via-blue-300 to-gray-500 w-full">
       <span className="  flex flex-col text-indigo-300 items-center font-style  text-2xl underline decoration-4 decoration-dashed underline-offset-7">
         Music Player
       </span>

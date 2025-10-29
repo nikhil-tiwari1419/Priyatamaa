@@ -104,7 +104,7 @@ function Firstpage() {
 
 
     return (
-        <div className='relative w-full mx-auto font-mono max-w-md bg-gradient-to-b from-gray-300 via-blue-100 to-gray-400 min-h-screen text-black px-2 pt-1.5'>
+        <div className='relative w-full mx-auto font-mono max-w-md bg-gradient-to-b from-gray-400 via-blue-300 to-gray-500 min-h-screen text-black px-2 pt-1.5'>
             {/* Title */}
             <div className='flex items-center justify-between border-b-fuchsia-500 border rounded-2xl p-2 px-3'>
                 <span className=' text-blue-800 items-center flex font-style gap-2 text-xl underline decoration-4 decoration-amber-300 decoration-dashed underline-offset-7'>

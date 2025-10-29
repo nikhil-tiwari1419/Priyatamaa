@@ -38,7 +38,7 @@ function Sixthpage() {
         directionPass("/Thirdpage")
     }
     return (
-        <div className='bg-white/80 min-h-screen mx-auto text-black max-w-md py-1 '>
+        <div className='bg-gradient-to-b from-gray-400 via-blue-300 to-gray-500 min-h-screen mx-auto text-black max-w-md py-1 '>
             {step === 1 && (
                 <div className='text-center mx-5  '>
                     <h2 className=' font-bold p-8'>- Select Option's -</h2>
