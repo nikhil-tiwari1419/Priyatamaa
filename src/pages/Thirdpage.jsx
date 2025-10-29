@@ -72,7 +72,7 @@ function Thirdpage() {
         <FaRegArrowAltCircleLeft />
 
       </button>
-      <div className='border-b-5 border-b-violet-600 p-3 rounded-xl h-[650px] overflow-y-auto no-scrollbar'>
+      <div className='border-b-5 border-b-blue-600 shadow-2xl p-3 rounded-xl h-[650px] overflow-y-auto no-scrollbar'>
         {CardData.map((item, index) => (
           <Cards
             key={index}
