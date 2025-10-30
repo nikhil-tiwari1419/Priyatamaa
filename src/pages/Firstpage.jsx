@@ -4,6 +4,7 @@ import { FaRegPlayCircle } from "react-icons/fa";
 import { FaRegPauseCircle } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { HiSun } from "react-icons/hi";
+import { useLocation } from 'react-router-dom';
 import Song from "../assets/Components/Song";
 function Firstpage() {
     const direction = useNavigate();
@@ -78,6 +79,12 @@ function Firstpage() {
         minute: "2-digit",
         second: "2-digit",
     });
+    
+    const location = useLocation();
+    const {name} = location.state || {name: "Guest"}
+    
+
+
     const SongCard = [
         {
             Name: "Blinding Lights",
@@ -161,7 +168,7 @@ function Firstpage() {
                 <div className='flex flex-col leading-tight'>
                     <h3 className='underline underline-offset-2 decoration-4 decoration-blue-400 text-xl '>{greeTing}</h3>
                    {/* <p className="text-lg text-gray-700">{fromattedTime}</p> */}
-                    <div className=' text-xl font-semibold '>Nikhil...</div>
+                    <div className=' text-xl font-semibold '>{name}</div>
                 </div>
             </div>
             <div className='flex overflow-x-auto no-scrollbar border rounded-full  border-none bg-white space-x-5 px-1 h-8 
