@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import { FaRegPlayCircle } from "react-icons/fa";
 import { FaRegPauseCircle } from "react-icons/fa";
@@ -42,7 +42,42 @@ function Firstpage() {
         audioRef.current.currentTime = (duration / 100) * value;
         setprogress(value);
     };
+    const [currentTime, setCurrentTime] = useState(new Date());
+    const [greeTing, setGreeTing] = useState("");
 
+
+    //update time 
+    useEffect(() => {
+        const timer = setInterval(() => {
+            const now = new Date();
+            setCurrentTime(now);
+            updateGreting(now);
+        }, 1000);
+        return () => clearInterval(timer);
+    }, []);
+
+
+    //function to determne greeting
+    const updateGreting = (time) => {
+        const hour = time.getHours();
+
+        if (hour >= 5 && hour < 12) {
+            setGreeTing("Good Morning");
+        } else if (hour >= 12 && hour < 17) {
+            setGreeTing("Good Afternoon");
+        } else if (hour >= 17 && hour < 20) {
+            setGreeTing("Good evening");
+        } else {
+            setGreeTing("Good Night");
+        }
+    };
+
+    //format time
+    const fromattedTime = currentTime.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+    });
     const SongCard = [
         {
             Name: "Blinding Lights",
@@ -124,7 +159,8 @@ function Firstpage() {
             <div className='px-2 mt-1 flex justify-center items-center gap-2'>
                 <HiSun className='text-4xl border-3 rounded-full border-blue-400 w-11 h-11 ' />
                 <div className='flex flex-col leading-tight'>
-                    <h3 className='underline underline-offset-2 decoration-4 decoration-blue-400 text-xl '>Good Morning</h3>
+                    <h3 className='underline underline-offset-2 decoration-4 decoration-blue-400 text-xl '>{greeTing}</h3>
+                   {/* <p className="text-lg text-gray-700">{fromattedTime}</p> */}
                     <div className=' text-xl font-semibold '>Nikhil...</div>
                 </div>
             </div>
@@ -169,7 +205,7 @@ function Firstpage() {
             </audio>
 
             {/* song */}
-            <div className='border m-2 h-[50vh] p-3 overflow-auto no-scrollbar shadow-md bg-black/5 border-none rounded-xl'>
+            <div className='border m-2 h-[50vh] p-3 pb-20 overflow-auto no-scrollbar shadow-md bg-black/5 border-none rounded-xl'>
                 {SongCard.map((item, idx) => (
                     <Song
                         key={idx}
@@ -185,7 +221,7 @@ function Firstpage() {
             <div className="fixed bottom-5 w-xl left-1/2 -translate-x-1/2 flex flex-col items-center 
                  backdrop-blur-md shadow-2xl border-violet-400 border-2 rounded-full  px-6 py-3 
                 z-50">
-                <h3>Default Songfor My PriyaTamaa </h3>
+                <h3 className='pb-2'>Default Songfor My PriyaTamaa </h3>
                 <input
                     type="range"
                     min="0"

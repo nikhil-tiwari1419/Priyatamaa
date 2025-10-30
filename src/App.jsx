@@ -1,5 +1,6 @@
 import './App.css'
 import Main from "./pages/Main";
+import Next from "./pages/Next";
 import Firstpage from "./pages/Firstpage";
 import SecondPage from "./pages/SecondPage";
 import Thirdpage from "./pages/Thirdpage";
@@ -11,20 +12,21 @@ function App() {
 
 
   return (
-    
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Main />}/>
-          <Route path="/Firstpage" element={<Firstpage />}/>
-          <Route path="/SecondPage" element={<SecondPage />}/>
-          <Route path="/Thirdpage" element={<Thirdpage />}/>
-          <Route path="/Fourthpage" element={<Fourthpage />}/>
-          <Route path="/Fifthpage" element={<Fifthpage />}/>
-          <Route path="/Sixthpage" element={<Sixthpage />}/>
-        </Routes>
-      </BrowserRouter>
 
-   
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/Next" element={<Next />} />
+        <Route path="/Firstpage" element={<Firstpage />} />
+        <Route path="/SecondPage" element={<SecondPage />} />
+        <Route path="/Thirdpage" element={<Thirdpage />} />
+        <Route path="/Fourthpage" element={<Fourthpage />} />
+        <Route path="/Fifthpage" element={<Fifthpage />} />
+        <Route path="/Sixthpage" element={<Sixthpage />} />
+      </Routes>
+    </BrowserRouter>
+
+
   )
 }
 

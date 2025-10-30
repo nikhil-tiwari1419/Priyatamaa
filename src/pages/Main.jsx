@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 function Main() {
   const navigate = useNavigate();
-  const GoToFirstpage = () => navigate("/Firstpage");
+  const GoToNext = () => navigate("/Next");
 
   return (
     <div className="relative min-h-screen max-w-md mx-auto overflow-hidden  shadow-2xl">
@@ -25,7 +25,7 @@ function Main() {
           Create playlists, find new tracks and listen to your favorite music anytime!
         </p>
         <button
-          onClick={GoToFirstpage}
+          onClick={GoToNext}
           className="bg-green-500 text-black font-semibold rounded-full px-6 py-2 hover:bg-green-400 transition-all"
         >
           Get started
