@@ -1,60 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import OtpInput from '../assets/Components/OtpInput';
-import { auth } from '../firebaseConfig';
-import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+
 
 function Next() {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [showOtpInput, setShowOtpInput] = useState(false);
-  const [confirmationResult, setConfirmationResult] = useState(null);
 
-    //set invalid Captcha 
-    //set invalid Captcha 
-    const setupRecaptcha = () => {
-      window.recaptchaVerifier = new RecaptchaVerifier(
-        'recaptcha-container',
-        {
-          size: 'invisible',
-          callback: () => console.log('Recaptcha verified'),
-        });
-    };
-
- const handleSendOtp = async (e) => {
-    e.preventDefault();
-    if (phoneNumber.length < 10 || !userName.trim()) {
-      alert("Please enter valid name and phone number");
-      return;
-    }
-
-        setupRecaptcha();
-
-const appVerifier = window.recaptchaVerifier;
-    const formattedNumber = "+91" + phoneNumber; // change country code if needed
-
-    try {
-      const result = await signInWithPhoneNumber(auth, formattedNumber, appVerifier);
-      setConfirmationResult(result);
-      setShowOtpInput(true);
-      alert("OTP sent successfully!");
-    } catch (error) {
-      console.error("SMS not sent", error);
-      alert("Error sending OTP. Try again later.");
-    }
-    };
-
-      const handleVerifyOtp = async (otpValue) => {
-    try {
-      await confirmationResult.confirm(otpValue);
-      alert("Login successful!");
-      navigate("/Firstpage", { state: { name: userName, phone: phoneNumber } });
-    } catch (error) {
-      alert("Invalid OTP");
-      console.error(error);
-    }
-  };
 
   const handleNameChange = (e) => setUserName(e.target.value);
   const handlePhoneNumber = (e) => setPhoneNumber(e.target.value);
