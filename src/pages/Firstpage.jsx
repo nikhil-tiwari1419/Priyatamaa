@@ -79,11 +79,24 @@ function Firstpage() {
         minute: "2-digit",
         second: "2-digit",
     });
-    
-    const location = useLocation();
-    const {name} = location.state || {name: "Guest"}
-    
 
+    const location = useLocation();
+    const { name } = location.state || { name: "Guest" }
+
+    const [text, setText] = useState("");
+
+    useEffect(() => {
+        const message = "Welcom To Priyatama Rect App!";
+        let idx = 0;
+
+        const interval = setInterval(() => {
+            setText((prev) => { prev + message[idx] });
+            idx++;
+            if (idx === message.length) clearInterval(interval);
+        }, 100);
+
+        return () => clearInterval(interval);
+    }, []);
 
     const SongCard = [
         {
@@ -167,7 +180,7 @@ function Firstpage() {
                 <HiSun className='text-4xl border-3 rounded-full border-blue-400 w-11 h-11 ' />
                 <div className='flex flex-col leading-tight'>
                     <h3 className='underline underline-offset-2 decoration-4 decoration-blue-400 text-xl '>{greeTing}</h3>
-                   {/* <p className="text-lg text-gray-700">{fromattedTime}</p> */}
+                    {/* <p className="text-lg text-gray-700">{fromattedTime}</p> */}
                     <div className=' text-xl font-semibold '>{name}</div>
                 </div>
             </div>
@@ -185,18 +198,11 @@ function Firstpage() {
                 <button className='text-sm flex-shrink-0' onClick={fifthpg}>
                     kuch-nahi
                 </button>
-                <button className='text-sm flex-shrink-0' onClick={fifthpg}>
-                    kuch-nahi
-                </button>
-                <button className='text-sm flex-shrink-0' onClick={fifthpg}>
-                    kuch-nahi
-                </button>
-                <button className='text-sm flex-shrink-0' onClick={fifthpg}>
-                    kuch-nahi
-                </button>
             </div>
             <div className='border h-50 mx-2'>
-
+                <h1 className="text-3xl font-semibold underline decoration-blue-500">
+                    {text}
+                </h1>
             </div>
             {/* audio */}
             <audio
