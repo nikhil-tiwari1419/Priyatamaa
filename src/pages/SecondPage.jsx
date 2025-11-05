@@ -1,10 +1,7 @@
-import React, { useState, useRef, useEffect, use } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+import { FaRegArrowAltCircleLeft, FaStepBackward, FaStepForward } from "react-icons/fa";
 import { FaPlay, FaPause } from "react-icons/fa6";
-import { FaStepBackward, FaStepForward } from "react-icons/fa";
-// import img1 from '../assets/';
-
 
 function SecondPage() {
   const navigate = useNavigate();
@@ -14,24 +11,19 @@ function SecondPage() {
   const [songs, setSongs] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // fetch songs.json (raw link)
+  // fetch songs.json from GitHub
   useEffect(() => {
-
     fetch("https://raw.githubusercontent.com/nikhil-tiwari1419/song-/main/song.JSON")
       .then((res) => res.json())
       .then((data) => {
         if (data.songs) setSongs(data.songs);
       })
-      .catch((error) => {
-        console.error("Error fetching songs:", error);
-      });
+      .catch((error) => console.error("Error fetching songs:", error));
   }, []);
 
-
-  // play pause func
+  // play / pause function
   const togglePlayPause = () => {
     if (!audioRef.current) return;
-
     if (isPlaying) {
       audioRef.current.pause();
     } else {
@@ -40,57 +32,34 @@ function SecondPage() {
     setIsPlaying(!isPlaying);
   };
 
-  // next song func
+  // next / previous
   const nextSong = () => {
-    if (currentIndex < songs.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    } else {
-      setCurrentIndex(0);
-    }
+    setCurrentIndex((prev) => (prev + 1) % songs.length);
   };
-
   const prevSong = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    } else {
-      setCurrentIndex(songs.length - 1);
-    }
+    setCurrentIndex((prev) => (prev - 1 + songs.length) % songs.length);
   };
 
-  // Auto play when song change 
-  useEffect(() => {
-    if (audioRef.current && songs.length > 0) {
-      audioRef.current.play();
-      if (isPlaying) {
-        audioRef.current.play().catch((error) =>
-          console.error("Error playing audio:", error)
-        );
-      }
-    }
-  }, [currentIndex]);
-
+  // auto play next song
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    const handeleEnded = () => {
-      // move to next song
-      setCurrentIndex((prevIndex) =>
-        prevIndex + 1 < songs.length ? prevIndex + 1 : 0
-      );
-      // auto play next song
-      setTimeout(() => {
-        audioRef.current.play().catch((error) => console.error(error));
-      }, 300);
-    };
+    const handleEnded = () => nextSong();
 
-    audio.addEventListener("ended", handeleEnded);
-
-    return () => {
-      audio.removeEventListener("ended", handeleEnded);
-    };
+    audio.addEventListener("ended", handleEnded);
+    return () => audio.removeEventListener("ended", handleEnded);
   }, [songs.length]);
 
+  // autoplay on song change
+  useEffect(() => {
+    if (audioRef.current && songs.length > 0) {
+      audioRef.current.play().catch((err) => console.log(err));
+      setIsPlaying(true);
+    }
+  }, [currentIndex]);
+
+  // rotating album image
   const images = [
     '/img/chill-chilling.gif',
     '/img/sad-life.gif',
@@ -101,37 +70,58 @@ function SecondPage() {
     '/img/waiting-waiting-for-you.gif',
     '/img/two-red-heart.png',
     '/img/cloudy-morning.gif'
-  ]
+  ];
   const [currentimgIndex, setCurrentimgIndex] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentimgIndex(prevIndex => (prevIndex + 1) % images.length);
+      setCurrentimgIndex(prev => (prev + 1) % images.length);
     }, 2000);
     return () => clearInterval(interval);
   }, [images.length]);
 
-  // seak bar configuration 
+  // seek bar & time tracking
+  const [progress, setProgress] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
+  const handleTimeUpdate = () => {
+    if (audioRef.current) {
+      const current = audioRef.current.currentTime;
+      const dur = audioRef.current.duration;
+      setCurrentTime(current);
+      setProgress((current / dur) * 100);
+    }
+  };
 
-  const [progress, setprogress] = useState(0);
+  const handleLoadedMetadata = () => {
+    if (audioRef.current) {
+      setDuration(audioRef.current.duration);
+    }
+  };
 
-  const handelTimeUpdate = () => {
-    const current = audioRef.current.currentTime;
-    const duration = audioRef.current.duration;
-    setprogress((current / duration) * 100);
-  }
-  const handelChange = (e) => {
+  const handleSeek = (e) => {
     const value = e.target.value;
-    const duration = audioRef.current.duration;
-    audioRef.current.currentTime = (duration / 100) * value;
-    setprogress(value);
+    if (audioRef.current) {
+      audioRef.current.currentTime = (value / 100) * duration;
+      setProgress(value);
+    }
+  };
+
+  const formatTime = (time) => {
+    if (isNaN(time)) return "00:00";
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
   };
 
   return (
-    <div className="min-h-screen mx-auto max-w-md  bg-gradient-to-b from-gray-400 via-blue-300 to-gray-500 w-full">
-      <span className="  flex flex-col text-indigo-300 items-center font-style  text-2xl underline decoration-4 decoration-dashed underline-offset-7">
+    <div className="min-h-screen mx-auto max-w-md bg-gradient-to-b from-gray-400 via-blue-300 to-gray-500 w-full">
+      <span className="flex flex-col text-indigo-300 items-center font-style text-2xl underline decoration-4 decoration-dashed underline-offset-7">
         Music Player
       </span>
+
       {/* Back Button */}
       <button
         className="mx-10 font-bold text-violet-600 text-2xl"
@@ -140,24 +130,28 @@ function SecondPage() {
         <FaRegArrowAltCircleLeft />
       </button>
 
-      <div className='flex justify-center mb-5'>
-        <div className="w-40 h-40  rounded-full overflow-hidden flex justify-between bg-gray-200 shadow-lg">
+      {/* Album Art */}
+      <div className="flex justify-center mb-5">
+        <div className="w-40 h-40 rounded-full overflow-hidden flex justify-center items-center bg-gray-200 shadow-[0_0_25px_rgba(147,51,234,0.6)]">
           <img
-            className='h-full w-full object-cover'
+            className={`h-full w-full object-cover rounded-full transition-all duration-500 
+              ${isPlaying ? 'animate-spin-slow' : ''}`}
             src={images[currentimgIndex]}
-            alt="some image"
+            alt="album art"
           />
         </div>
       </div>
-      {/* <h2 className="text-center font-bold mb-3 text-cyan-500 text-2xl">Song's list</h2> */}
 
+      {/* Song List */}
       <div className="h-[530px] px-2 mx-5 overflow-y-auto no-scrollbar rounded-xl bg-transparent shadow-lg shadow-gray-900/50">
         <ul className="space-y-2">
           {songs.map((song, idx) => (
-            <li key={idx}
-              className={`p-2 bg-transparent border-b text-black border-gray-500 rounded cursor-pointer  ${currentIndex === idx ? "text-blue-600" : "bg-blue-300 hover:bg-gray-400"
-
-                }`}
+            <li
+              key={idx}
+              className={`p-2 border-b text-black border-gray-500 rounded cursor-pointer 
+                ${currentIndex === idx
+                  ? "text-blue-600 bg-blue-200"
+                  : "bg-blue-300 hover:bg-gray-400"}`}
               onClick={() => {
                 setCurrentIndex(idx);
                 setIsPlaying(true);
@@ -167,38 +161,45 @@ function SecondPage() {
             </li>
           ))}
         </ul>
+
         {songs.length > 0 && (
           <audio
             ref={audioRef}
             src={songs[currentIndex].url}
             onEnded={nextSong}
-            onTimeUpdate={handelTimeUpdate}
+            onTimeUpdate={handleTimeUpdate}
+            onLoadedMetadata={handleLoadedMetadata}
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
-            controls
-            className="w-full mt-3 mb-3 h-10"
-
+            className="hidden"
           />
         )}
       </div>
-      {/* Controls */}
+
+      {/* Player Controls */}
       <div
         className="fixed bottom-5 left-1/2 -translate-x-1/2 w-[70vw] flex flex-col items-center 
-             backdrop-blur-md shadow-2xl border-violet-400 border-2 rounded  
-              py-4 bg-white/20 z-50"
+        backdrop-blur-md shadow-2xl border-violet-400 border-2 rounded  
+        py-4 bg-white/20 z-50"
       >
         {/* Seek Bar */}
         <input
           type="range"
           min="0"
-          max={audioRef.current?.duration || 0}
-          value={audioRef.current?.currentTime || 0}
-          onChange={handelChange}
+          max="100"
+          value={progress}
+          onChange={handleSeek}
           style={{
             background: `linear-gradient(to right, #9333ea ${progress}%, #e5e7eb ${progress}%)`,
           }}
-          className="w-56 rounded-2xl h-1 appearance-none cursor-pointer focus:outline-none mb-2 "
+          className="w-56 rounded-2xl h-1 appearance-none cursor-pointer focus:outline-none mb-1"
         />
+
+        {/* Time Display */}
+        <div className="flex justify-between text-xs text-gray-800 w-56 mb-2">
+          <span>{formatTime(currentTime)}</span>
+          <span>{formatTime(duration)}</span>
+        </div>
 
         {/* Control Buttons */}
         <div className="flex items-center justify-center space-x-4">
@@ -221,18 +222,12 @@ function SecondPage() {
         </div>
       </div>
 
-
-      {/* footer */}
-      <div>
-        <div className="text-center mt-2 text-gray-900 bottom-0 text-sm">
-          Crafted with 💗
-        </div>
+      {/* Footer */}
+      <div className="text-center mt-2 text-gray-900 bottom-0 text-sm">
+        Crafted with 💗
       </div>
     </div>
   );
 }
 
 export default SecondPage;
-
-
-
