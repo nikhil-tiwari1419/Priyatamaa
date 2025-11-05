@@ -70,3 +70,16 @@
 .animate-spin-slow {
   animation: spin-slow 10s linear infinite;
 }
+
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(236, 72, 153, 0.5);
+  }
+}
+.glow-pulse {
+  animation: glowPulse 2s infinite ease-in-out;
+}

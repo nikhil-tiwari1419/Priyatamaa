@@ -1,38 +1,50 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-function Cards({ title, icon1: Icon1, icon2: Icon2, bgImage, btn1, btn2, link,type }) {
-  const navigate = useNavigate();
-  return (
-    <div className="w-full rounded-3xl text-black mb-6 border-1 border-b-5 overflow-hidden shadow-lg">
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-      {/* 🔹 Header with icons */}
-      <div className="flex justify-between items-center p-2">
-        <span className="flex items-center gap-3 text-lg font-semibold border-1 border-b-4 px-4 py-1 rounded-lg">
-          <Icon1 /> {title}
+function Cards({ title, icon1: Icon1, icon2: Icon2, bgImage, btn1, btn2, link, type }) {
+  const navigate = useNavigate();
+
+  return (
+    <div
+      className="w-full rounded-3xl mb-6 overflow-hidden 
+        shadow-xl border border-white/30 
+        bg-white/30 backdrop-blur-lg
+        transform transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(147,51,234,0.3)]"
+    >
+      {/* Header */}
+      <div className="flex justify-between items-center p-4 border-b border-white/40">
+        <span className="flex items-center gap-3 text-lg font-semibold text-gray-800">
+          <Icon1 className="text-black text-2xl" /> {title}
         </span>
-        <Icon2 className="text-black text-xl cursor-pointer" />
+        <Icon2 className="text-violet-700 text-xl cursor-pointer hover:text-violet-500 transition" />
       </div>
 
-      {/* 🔹 Circular Image in the middle */}
-      <div className="flex justify-center ">
-        <div className="w-18 h-18 rounded-full overflow-hidden border border-none shadow-lg">
+      {/* Circular Image */}
+      <div className="flex justify-center py-4">
+        <div
+          className="relative w-24 h-24 rounded-full overflow-hidden shadow-[0_0_20px_rgba(147,51,234,0.4)]
+          border-4 border-violet-400/50 transition-transform duration-500 hover:scale-110"
+        >
           <img
             src={bgImage}
             alt="card"
-            className="w-full h-full object-cover"
+            className=" object-cover relative w-24 h-24 rounded-full overflow-hidden glow-pulse"
           />
         </div>
       </div>
 
-      {/* 🔹 link external and internal + Button */}
-      <div className="flex flex-col items-center mt-2 space-y-2">
-        {/* <div className="text-3xl">{Emogi}</div> */}
+      {/* Buttons */}
+      <div className="flex flex-col items-center mt-2 pb-4 space-y-3">
         {type === "External" && (
           <a
             href={link}
             target="_blank"
             rel="noopener noreferrer"
-            className=" py-1 px-10 mb-2 font-bold rounded-2xl border-b-4 border-1 hover:bg-gray-200 transition"
+            className="px-8 py-2 text-white font-semibold rounded-full 
+              bg-gradient-to-r from-violet-500 to-pink-500 
+              shadow-md shadow-violet-400/40 
+              hover:from-pink-500 hover:to-violet-500 
+              active:scale-95 transition-transform"
           >
             {btn1}
           </a>
@@ -40,14 +52,18 @@ function Cards({ title, icon1: Icon1, icon2: Icon2, bgImage, btn1, btn2, link,ty
         {type === "Internal" && (
           <button
             onClick={() => navigate(link)}
-            className=" py-1 px-10 mb-2 font-bold rounded-2xl border-b-4 border-1 hover:bg-gray-200 transition"
+            className="px-8 py-2 text-white font-semibold rounded-full 
+              bg-gradient-to-r from-indigo-500 to-purple-500 
+              shadow-md shadow-indigo-400/40 
+              hover:from-purple-500 hover:to-indigo-500 
+              active:scale-95 transition-transform"
           >
             {btn2}
           </button>
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default Cards
+export default Cards;
