@@ -2,7 +2,7 @@ import React from 'react'
 
 function Female() {
     return (
-        <div className='shadow-2xl border h-[75vh] mx-4 rounded-xl mt-4 border-b-3 border-none overflow-auto'>
+        <div className='shadow-2xl border no-scrollbar h-[75vh] mx-4 rounded-xl mt-4 border-b-3 border-none overflow-auto'>
             <h3 className='border border-b-4 rounded-xl text-blue-800 mx-2 mt-3'> 1 “If I know what love is, it is because of you.” – Hermann Hesse</h3>
             <h3 className='border border-b-4 rounded-xl mx-2 mt-3'>  2 ”I fell in love with her courage, her sincerity, and her flaming self respect. And it’s these things I’d believe in, even if the whole world indulged in wild suspicions that she wasn’t all she should be. I love her and it is the beginning of everything.” – F. Scott Fitzgerald</h3>
             <h3 className='border border-b-4  text-pink-800 rounded-xl mx-2 mt-3'>  3 “I swear I couldn’t love you more than I do right now, and yet I know I will tomorrow.” – Leo Christopher</h3>

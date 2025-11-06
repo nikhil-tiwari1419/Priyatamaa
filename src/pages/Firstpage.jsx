@@ -140,7 +140,7 @@ function Firstpage() {
             </div>
 
             <div className="border h-50 mx-2">
-                <h1 className="text-3xl font-semibold underline decoration-blue-500">{text}</h1>
+                <h1 className="text-3xl flex flex-wrap justify-center items-centre font-semibold underline decoration-blue-500">{text}</h1>
             </div>
 
             {/* Audio */}
