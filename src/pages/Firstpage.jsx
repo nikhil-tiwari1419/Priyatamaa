@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import { FaRegPlayCircle, FaRegPauseCircle, FaSearch } from "react-icons/fa";
-import { HiSun } from "react-icons/hi";
+import { FaUser } from "react-icons/fa";
+// import { HiSun } from "react-icons/hi";
 import Song from "../assets/Components/Song";
 
 function Firstpage() {
@@ -102,20 +103,20 @@ function Firstpage() {
     ];
 
     return (
-        <div className="relative w-full mx-auto font-mono max-w-md bg-gradient-to-b from-gray-400 via-blue-300 to-gray-500 min-h-screen text-black px-2 pt-1.5">
+        <div className="relative w-full mx-auto font-mono max-w-md bg-gray-800 min-h-screen text-white px-2 pt-1.5">
             {/* Title */}
-            <div className="flex items-center justify-between border-b-fuchsia-500 border rounded-2xl p-2 px-3">
-                <span className="text-blue-800 flex items-center gap-2 text-xl underline decoration-4 decoration-amber-300 decoration-dashed underline-offset-7">
+            <div className="flex items-center justify-between border rounded-2xl p-2 px-3">
+                <span className=" flex items-center gap-2 text-xl underline decoration-4 decoration-amber-300 decoration-dashed underline-offset-7">
                     <img className="w-10 h-10 rounded-full" src="/img/image.png" alt="logo" />
                     PriyaTamaa
                 </span>
-                <span className="border-3 border-blue-500 rounded-full w-10 h-10 flex items-center justify-center text-xl">
+                <span className="border-3 rounded-full w-10 h-10 flex items-center justify-center text-xl">
                     <FaSearch />
                 </span>
             </div>
 
             <div className="px-2 mt-1 flex justify-center items-center gap-2">
-                <HiSun className="text-4xl border-3 rounded-full border-blue-400 w-11 h-11 " />
+                <FaUser className="text-2xl border-3 p-1 rounded-full w-10 h-10 " />
                 <div className="flex flex-col leading-tight">
                     <h3 className="underline underline-offset-2 decoration-4 decoration-blue-400 text-xl">
                         {greeTing}
@@ -124,23 +125,23 @@ function Firstpage() {
                 </div>
             </div>
 
-            <div className="flex overflow-x-auto no-scrollbar border rounded-full border-none bg-white space-x-5 px-1 h-8 m-2">
-                <button onClick={() => goTo("SecondPage")} className="text-sm hover:underline flex-shrink-0">
+            <div className="flex overflow-x-auto no-scrollbar border rounded-full border-none p-2 space-x-5 text-black m-2">
+                <button onClick={() => goTo("SecondPage")} className="text-sm hover:underline px-3 border rounded bg-amber-200  flex-shrink-0">
                     Song playlist
                 </button>
-                <button onClick={() => goTo("Thirdpage")} className="text-sm flex-shrink-0">
+                <button onClick={() => goTo("Thirdpage")} className="text-sm hover:underline px-3 border rounded bg-amber-200 flex-shrink-0">
                     Explore more
                 </button>
-                <button onClick={() => goTo("Fourthpage")} className="text-sm flex-shrink-0">
+                <button onClick={() => goTo("Fourthpage")} className="text-sm hover:underline px-3 border rounded bg-amber-200 flex-shrink-0">
                     Yadeen
                 </button>
-                <button onClick={() => goTo("Fifthpage")} className="text-sm flex-shrink-0">
+                <button onClick={() => goTo("Fifthpage")} className="text-sm hover:underline px-3 border rounded bg-amber-200 flex-shrink-0">
                     Kuch-Nahi
                 </button>
             </div>
 
-            <div className="border h-50 mx-2">
-                <h1 className="text-3xl flex flex-wrap justify-center items-centre font-semibold underline decoration-blue-500">{text}</h1>
+            <div className="border border-none h-50 mx-2 text-black bg-yellow-300 rounded-2xl">
+                <h1 className="text-3xl p-3 flex flex-wrap justify-center items-center font-semibold underline decoration-blue-500">{text}</h1>
             </div>
 
             {/* Audio */}
@@ -155,72 +156,51 @@ function Firstpage() {
             />
 
             {/* Song List */}
-            <div className="border m-2 h-[50vh] p-3 pb-20 overflow-auto no-scrollbar shadow-md bg-black/5 border-none rounded-xl">
+            <div className="border m-2 h-[50vh] p-3 pb-20 overflow-auto no-scrollbar shadow-md border-none rounded-xl">
                 {SongCard.map((item, idx) => (
                     <Song key={idx} name={item.Name} song={item.Song} img={item.Img} />
                 ))}
             </div>
 
             {/* Seek Bar */}
-            <div className="fixed bottom-5 w-[90%] max-w-sm left-1/2 -translate-x-1/2 
-    flex flex-col items-center justify-center 
-    backdrop-blur-xl bg-white/30 border border-violet-400/50 
-    rounded-3xl shadow-[0_0_25px_rgba(147,51,234,0.3)] px-6 py-4 z-50">
+           <div className="fixed bottom-4 left-1/2 -translate-x-1/2 
+  w-[90%] max-w-xs bg-white/70 backdrop-blur-md 
+  border border-gray-300 rounded-2xl shadow-md 
+  px-4 py-3 flex flex-col items-center text-sm text-black z-50">
 
-                {/* Title */}
-                <h3 className="pb-1 text-lg font-semibold text-purple-800 tracking-wide text-center">
-                    Default Song for My PriyaTamaa 💖
-                </h3>
+  {/* Title */}
+  <h3 className="font-medium text-gray-800 mb-2 text-center">
+    🎵 Default Song – My PriyaTamaa 
+  </h3>
 
-                {/* Time and Slider */}
-                <div className="flex items-center justify-between w-full text-xs font-semibold text-gray-700">
-                    <span>
-                        {new Date(current * 1000).toISOString().substr(14, 5) || "0:00"}
-                    </span>
+  {/* Time and Slider */}
+  <div className="flex items-center justify-between w-full">
+    <span className="text-[11px]">{new Date(current * 1000).toISOString().substr(14, 5) || "0:00"}</span>
 
-                    {/* Slider */}
-                    <div className="relative w-56">
-                        <input
-                            type="range"
-                            min="0"
-                            max={duration || 0}
-                            value={current || 0}
-                            onChange={handelChange}
-                            className="w-full h-2 appearance-none rounded-full cursor-pointer bg-gradient-to-r from-pink-200 via-purple-300 to-blue-300 accent-transparent 
-        [&::-webkit-slider-thumb]:appearance-none 
-        [&::-webkit-slider-thumb]:w-4 
-        [&::-webkit-slider-thumb]:h-4 
-        [&::-webkit-slider-thumb]:rounded-full 
-        [&::-webkit-slider-thumb]:bg-gradient-to-r 
-        [&::-webkit-slider-thumb]:from-blue-200 
-        [&::-webkit-slider-thumb]:to-gray-500 
-        [&::-webkit-slider-thumb]:shadow-[0_0_10px_rgba(255,192,203,0.8)] 
-        transition-all duration-300 hover:scale-105"
-                        />
-                        {/* glowing overlay */}
-                        <div
-                            className="absolute top-1/2 left-0 h-[2px] bg-gradient-to-r from-yellow-400 to-pink-500 rounded-full pointer-events-none"
-                            style={{ width: `${progress}%`, transform: 'translateY(-50%)' }}
-                        />
-                    </div>
+    <input
+      type="range"
+      min="0"
+      max={duration || 0}
+      value={current || 0}
+      onChange={handelChange}
+      className="w-40 h-1 mx-2 rounded-full cursor-pointer bg-gray-300 accent-purple-500"
+    />
 
-                    <span>
-                        {new Date(duration * 1000).toISOString().substr(14, 5) || "0:00"}
-                    </span>
-                </div>
+    <span className="text-[11px]">{new Date(duration * 1000).toISOString().substr(14, 5) || "0:00"}</span>
+  </div>
 
-                {/* Play / Pause Button */}
-                <button
-                    onClick={togglePlayPaus}
-                    className="mt-3 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                >
-                    {playpaus ? (
-                        <FaRegPauseCircle className="text-yellow-400 text-5xl drop-shadow-[0_0_10px_rgba(255,255,0,0.5)] animate-pulse" />
-                    ) : (
-                        <FaRegPlayCircle className="text-purple-700 text-5xl drop-shadow-[0_0_10px_rgba(147,51,234,0.5)]" />
-                    )}
-                </button>
-            </div>
+  {/* Play / Pause Button */}
+  <button
+    onClick={togglePlayPaus}
+    className="mt-2 flex items-center justify-center cursor-pointer hover:scale-105 transition-transform"
+  >
+    {playpaus ? (
+      <FaRegPauseCircle className="text-purple-600 text-3xl" />
+    ) : (
+      <FaRegPlayCircle className="text-purple-600 text-3xl" />
+    )}
+  </button>
+</div>
 
         </div>
     );

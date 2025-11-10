@@ -19,8 +19,8 @@ function OtpInput({ length = 4, onOtpSubmit = () => { } }) {
         newOtp[idx] = value.substring(value.length - 1);
         setopt(newOtp)
         // submit trigger 
-        const comdinedOtp = newOtp.join("");
-        if (comdinedOtp.length === length) onOtpSubmit(comdinedOtp)
+        const combineOtp = newOtp.join("");
+        if (combineOtp.length === length) onOtpSubmit(combineOtp)
 
         if (value && idx < length - 1 && inputRefs.current[idx + 1]) {
             inputRefs.current[idx + 1].focus();
